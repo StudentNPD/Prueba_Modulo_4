@@ -62,11 +62,30 @@ class Video(Anuncio):
 
     def __init__(self, url_archivo, url_clic, sub_tipo, duracion):
             self.duracion = duracion
+    def comprimir_anuncio():
+        print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
+
+    def redimensionar_anuncio():
+        print("REDIMENSIONAMIENTO DE ANUNCIOS DISPLAY NO IMPLEMENTADO AÚN")
+
 
 class Display(Anuncio):
     FORMATO = "Display"
     SUB_TIPOS = ("tradicional", "native")
 
+    def comprimir_anuncio():
+        print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
+
+    def redimensionar_anuncio():
+        print("REDIMENSIONAMIENTO DE ANUNCIOS DISPLAY NO IMPLEMENTADO AÚN")
+
 class Social(Anuncio):
     FORMATO = "Social"
     SUB_TIPOS = ("facebook", "linkedin")
+
+    def comprimir_anuncio():
+        print("COMPRESIÓN DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADA AÚN")
+
+    def redimensionar_anuncio():
+        print("REDIMENSIONAMIENTO DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADO AÚN")
+
