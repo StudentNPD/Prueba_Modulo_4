@@ -3,8 +3,8 @@
 class Anuncio():
     
     def __init__(self, alto, ancho, url_archivo, url_clic, sub_tipo):
-        self._alto = alto
-        self._ancho = ancho
+        self._alto = alto if alto > 0 else 1
+        self._ancho = ancho if ancho > 0 else 1
         self._url_archivo = url_archivo
         self._url_clic = url_clic
         self._sub_tipo = sub_tipo
