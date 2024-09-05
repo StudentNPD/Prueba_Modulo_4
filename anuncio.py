@@ -15,8 +15,7 @@ class Video(Anuncio):
     SUB_TIPOS = ("instream", "outstream")
 
     def __init__(self, url_archivo, url_clic, sub_tipo, duracion):
-        super().__init__(1, 1, url_archivo, url_clic, sub_tipo)
-        self.duracion = duracion
+            self.duracion = duracion
 
 class Display(Anuncio):
     FORMATO = "Display"
@@ -25,4 +24,3 @@ class Display(Anuncio):
 class Social(Anuncio):
     FORMATO = "Social"
     SUB_TIPOS = ("facebook", "linkedin")
-    
