@@ -66,3 +66,21 @@ class Campaña:
         while tipo_anuncio not in  ["V", "D", "S"]:
             tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
 
+        url_archivo = input("Ingrese la url del archivo:\n")
+        url_click = input("Ingrese la url del click:\n")
+        sub_tipo = input("Ingrese el subtipo del anuncio:\n")
+
+        if tipo_anuncio == "Video":
+            duracion = int(input("Ingrese la duración del video:\n"))
+            nuevo_anuncio = Video(url_archivo, url_click, sub_tipo, duracion)
+        elif tipo_anuncio == "Display":
+            ancho = int(input("Ingrese el ancho del anuncio:\n"))
+            alto = int(input("Ingrese el alto del archivo:\n"))
+            nuevo_anuncio = Display(ancho, alto, url_archivo, url_click, sub_tipo)
+        else:
+            ancho = int(input("Ingrese el ancho del anuncio:\n"))
+            alto = int(input("Ingrese el alto del archivo:\n"))
+            nuevo_anuncio = Social(ancho, alto, url_archivo, url_click, sub_tipo)
+
+        self.anuncios.append(nuevo_anuncio)
+        return nuevo_anuncio
