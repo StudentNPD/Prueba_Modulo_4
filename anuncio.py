@@ -1,14 +1,14 @@
-   
+from abc import ABC, abstractmethod
 
-class Anuncio():
-    
+
+class Anuncio:
+
     def __init__(self, alto, ancho, url_archivo, url_clic, sub_tipo):
         self._alto = alto if alto > 0 else 1
         self._ancho = ancho if ancho > 0 else 1
         self._url_archivo = url_archivo
         self._url_clic = url_clic
         self._sub_tipo = sub_tipo
-
 
     @property
     def ancho(self):
@@ -46,6 +46,14 @@ class Anuncio():
     def sub_tipo(self):
         return self.__sub_tipo
 
+    @abstractmethod
+    def comprimir_anuncio(self):
+        pass
+
+    @abstractmethod
+    def redimensionar_anuncio(self):
+        pass
+
     @sub_tipo.setter
     def sub_tipo(self, valor: str):
         if valor in self.SUB_TIPOS:
@@ -53,15 +61,28 @@ class Anuncio():
         else:
             raise SubTipoInvalidoException("El formato del archivo no es válido")
 
+    def mostrar_formatos():
+        for formatos in [Video, Display, Social]:
+            print(f"FORMATO {formatos.FORMATO}:")
+            print("=" * (len(formatos.FORMATO) + 8))
+            for subtipo in formatos.SUB_TIPOS:
+                print(f" {subtipo}")
+            print()
+
+
+class SubTipoInvalidoException(Exception):
+    pass
 
 
 class Video(Anuncio):
-    
+
     FORMATO = "Video"
     SUB_TIPOS = ("instream", "outstream")
 
     def __init__(self, url_archivo, url_clic, sub_tipo, duracion):
-            self.duracion = duracion
+        super().__init__(1, 1, url_archivo, url_clic, sub_tipo)
+        self.duracion = duracion
+
     def comprimir_anuncio():
         print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
 
@@ -79,6 +100,7 @@ class Display(Anuncio):
     def redimensionar_anuncio():
         print("REDIMENSIONAMIENTO DE ANUNCIOS DISPLAY NO IMPLEMENTADO AÚN")
 
+
 class Social(Anuncio):
     FORMATO = "Social"
     SUB_TIPOS = ("facebook", "linkedin")
@@ -88,4 +110,3 @@ class Social(Anuncio):
 
     def redimensionar_anuncio():
         print("REDIMENSIONAMIENTO DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADO AÚN")
-
