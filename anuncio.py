@@ -64,7 +64,7 @@ class Anuncio:
     def mostrar_formatos():
         for formatos in [Video, Display, Social]:
             print(f"FORMATO {formatos.FORMATO}:")
-            print("=" * (len(formatos.FORMATO) + 8))
+            print("-----------------")
             for subtipo in formatos.SUB_TIPOS:
                 print(f" {subtipo}")
             print()
