@@ -6,3 +6,6 @@ class LargoExcedidoException(Error):
 
 class SubTipoInvalidoException(Error):
     pass
+
+class SubTipoInvalidoError(Error):
+    pass
