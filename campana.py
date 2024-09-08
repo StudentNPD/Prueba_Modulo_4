@@ -1,4 +1,8 @@
-class Campaña:
+from error import LargoExcedidoException, SubTipoInvalidoException # agregado
+from anuncio import Display, Video, Social # agregado
+
+
+class Campana:
     LARGO_NOMBRE_ANUNCIO=250
 
     def __init__(self, nombre: str, fecha_inicio: str, fecha_termino: str) -> None:
@@ -14,7 +18,7 @@ class Campaña:
 
     @nombre.setter
     def nombre(self, valor: str):
-        if len(valor) <= LARGO_NOMBRE_ANUNCIO:
+        if len(valor) <= 250: # LARGO_NOMBRE_ANUNCIO: No lo toma 
             self.__nombre = valor
         else:
             raise LargoExcedidoException("El número de carácteres excede lo permitido")
@@ -54,17 +58,17 @@ class Campaña:
                 n_display += 1
             else:
                 n_social += 1
-       
         return f"""
-        Nombre de la campaña: {self.nombre}
+        Nombre de la campana: {self.nombre}
         Anuncios: {n_videos} Video, {n_display} Display, {n_social} Social
         """
     
 
     def crear_anuncio(self):
         tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social'):\n")
-        while tipo_anuncio not in  ["V", "D", "S"]:
-            tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
+        if tipo_anuncio not in  ["V", "D", "S"]: # No es necesario que sea un ciclo
+            #tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
+            raise SubTipoInvalidoException("Ingrese en mayuscula solo la primera letra de la opción")
 
         url_archivo = input("Ingrese la url del archivo:\n")
         url_click = input("Ingrese la url del click:\n")
