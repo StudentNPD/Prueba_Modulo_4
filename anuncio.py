@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from error import SubTipoInvalidoException #agregado
 
 class Anuncio:
 
@@ -70,10 +70,6 @@ class Anuncio:
             print()
 
 
-class SubTipoInvalidoException(Exception):
-    pass
-
-
 class Video(Anuncio):
 
     FORMATO = "Video"
@@ -92,7 +88,7 @@ class Video(Anuncio):
 
 class Display(Anuncio):
     FORMATO = "Display"
-    SUB_TIPOS = ("tradicional", "native")
+    SUB_TIPOS = (" adicional", "native")
 
     def comprimir_anuncio():
         print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
