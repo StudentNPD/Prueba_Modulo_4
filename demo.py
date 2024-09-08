@@ -1,5 +1,5 @@
 from campana import Campana
-from error import Error, LargoExcedidoException, SubTipoInvalidoException
+from error import Error, LargoExcedidoException, SubTipoInvalidoException, SubTipoInvalidoError
 from datetime import datetime
 
 NOMBRE_LOG="archivolog.log"
