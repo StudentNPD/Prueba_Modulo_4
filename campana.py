@@ -50,7 +50,7 @@ class Campana:
         tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social'):\n").strip().upper
         while tipo_anuncio not in  ["V", "D", "S"]:
         #if tipo_anuncio not in  ["V", "D", "S"]: # No es necesario que sea un ciclo
-            tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
+            tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n").strip().upper
          #   raise SubTipoInvalidoException("Ingrese en mayuscula solo la primera letra de la opción")
 
         url_archivo = input("Ingrese la url del archivo:\n")
