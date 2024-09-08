@@ -76,6 +76,8 @@ class Video(Anuncio):
     SUB_TIPOS = ("instream", "outstream")
 
     def __init__(self, url_archivo, url_clic, sub_tipo, duracion):
+        if sub_tipo not in self.SUB_TIPOS:
+            raise SubTipoInvalidoError(f"Subtipo {sub_tipo} no es válido para Video")
         super().__init__(1, 1, url_archivo, url_clic, sub_tipo)
         self.duracion = duracion
 
@@ -90,6 +92,11 @@ class Display(Anuncio):
     FORMATO = "Display"
     SUB_TIPOS = (" adicional", "native")
 
+    def __init__(self, ancho, alto, url_archivo, url_clic, sub_tipo):
+        if sub_tipo not in self.SUB_TIPOS:
+            raise SubTipoInvalidoError(f"Subtipo {sub_tipo} no es valido para Display")
+        super().__init__(ancho, alto, url_archivo, url_clic, sub_tipo)
+
     def comprimir_anuncio():
         print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
 
@@ -100,6 +107,11 @@ class Display(Anuncio):
 class Social(Anuncio):
     FORMATO = "Social"
     SUB_TIPOS = ("facebook", "linkedin")
+
+    def __init__(self, ancho, alto, url_archivo, url_clic, sub_tipo):
+        if sub_tipo not in self.SUB_TIPOS:
+            raise SubTipoInvalidoError(f"Subtipo {sub_tipo} no es válido para Social")
+        super().__init__(ancho, alto, url_archivo, url_clic, sub_tipo)
 
     def comprimir_anuncio():
         print("COMPRESIÓN DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADA AÚN")
