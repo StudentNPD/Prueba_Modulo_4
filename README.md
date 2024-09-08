@@ -28,11 +28,11 @@ facilitado el diagrama de clases que permite codificar lo solicitado
 
 ***Windows***
 
-`python juego.py`
+`python demo.py`
 
 ***Linux & iOS***
 
-`python3 juego.py`
+`python3 demo.py`
 
 ------------------------------------------
 ## Colaboradores
