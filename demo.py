@@ -15,8 +15,16 @@ consultar = True
 while consultar:
 
     try:
-        #modificar campana
         print("Creemos una campaña! :D")
+        # Ingrese el nombre de su campaña 
+        # Preguntar por el tipo de anuncio que desea agregar con sus especificaciones
+        # Preguntar si desea agregar otro anuncio
+        # Mostrar: 
+        #          Nombre de la campaña: Campaña 1
+        #          Anuncios: 1 Video, 2 Display, 0 Social
+        # Preguntar si desea cambiar nombre campaña, agregar anuncio o salir
+        
+        
         
         nuevo_nombre = input("Ingrese el nuevo nombre de la campana:\n")
         print(nuevo_nombre)
@@ -29,7 +37,7 @@ while consultar:
         print(e)
         with open(NOMBRE_LOG, 'a') as log:
             log.write(f'{fecha_actual} : [ERROR]: {e}\n')
-
+            
     except SubTipoInvalidoException as e:
         fecha_actual = datetime.now()
         # Imprime solo el mensaje
