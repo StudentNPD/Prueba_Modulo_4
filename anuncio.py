@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from error import SubTipoInvalidoException #agregado
+from error import SubTipoInvalidoException, SubTipoInvalidoError #agregado
 
 class Anuncio:
 
