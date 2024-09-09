@@ -18,7 +18,7 @@ El proyecto está estructurado en varios componentes clave:
 
 A continuación se muestra el diagrama de clases del proyecto:
 
-![Diagrama de Clases]('Diagrama de Clases Prueba POO con Python.png')
+![Diagrama de Clases](Diagrama de Clases Prueba POO con Python.png)
 
 ## Clases y Variables Importantes
 
