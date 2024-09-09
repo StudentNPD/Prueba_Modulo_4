@@ -1,21 +1,75 @@
-# Prueba_Modulo_4
+# Prueba Módulo 4
 
-Usted trabaja para una empresa de marketing digital que se dedica a implementar campañas
-publicitarias en distintas plataformas de anuncios digitales. Para ello, tienen una plataforma
-web para sus clientes, donde ellos ingresan los datos necesarios para la campaña que desean
-que sea implementada. Actualmente, esta plataforma funciona como una aplicación web
-MVC, construida en lenguaje PHP.
-Para el año en curso, se le ha solicitado al equipo de desarrollo que construya una API que
-implemente la lógica “BackEnd” de su plataforma actual, de forma que ésta pueda ser
-consumida tanto por un FrontEnd Web de escritorio, como por su aplicación móvil, así como
-también por los clientes que quieran hacer uso de ella en sus propias aplicaciones. Este
-desarrollo se realizará de forma incremental, con entregas parciales cada dos semanas.
-El equipo de desarrollo ha decidido crear esta API utilizando Python, aunque aún se está
-evaluando qué framework se aplicará. Para la primera etapa, se le ha asignado como primera
-tarea crear la arquitectura de clases básica que permite instanciar una campaña, conteniendo
-como posibles tipos de anuncio los más solicitados por los clientes. Para ello, se le ha
-facilitado el diagrama de clases que permite codificar lo solicitado
+## Descripción del Proyecto
 
+Este proyecto implementa una API para la gestión de campañas publicitarias, diseñada para ser consumida por diferentes interfaces de usuario, incluyendo aplicaciones web de escritorio, aplicaciones móviles y sistemas de terceros. La API está desarrollada en Python y forma parte de un desarrollo incremental con entregas parciales cada dos semanas.
+
+## Estructura del Proyecto
+
+El proyecto está estructurado en varios componentes clave:
+
+1. **Clase Anuncio**: Clase base para los diferentes tipos de anuncios.
+2. **Clases Video, Display, Social**: Clases derivadas de Anuncio para tipos específicos de anuncios.
+3. **Clase Campana**: Gestiona una campaña publicitaria y sus anuncios asociados.
+4. **Manejo de Errores**: Incluye excepciones personalizadas para manejar errores específicos.
+5. **Interfaz de Usuario**: Un menú de consola para interactuar con el sistema (será reemplazado por la API en futuras iteraciones).
+
+## Diagrama de Clases
+
+A continuación se muestra el diagrama de clases del proyecto:
+
+![Diagrama de Clases]('Diagrama de Clases Prueba POO con Python.png')
+
+## Clases y Variables Importantes
+
+### Clase Anuncio
+- Atributos principales:
+  - `_alto`: Altura del anuncio
+  - `_ancho`: Ancho del anuncio
+  - `_url_archivo`: URL del archivo del anuncio
+  - `_url_click`: URL de destino al hacer clic
+  - `_sub_tipo`: Subtipo específico del anuncio
+
+### Clase Video (hereda de Anuncio)
+- Atributo adicional:
+  - `duracion`: Duración del video en segundos
+
+### Clase Display (hereda de Anuncio)
+- Sin atributos adicionales, utiliza los de la clase base
+
+### Clase Social (hereda de Anuncio)
+- Sin atributos adicionales, utiliza los de la clase base
+
+### Clase Campana
+- Atributos principales:
+  - `_nombre`: Nombre de la campaña
+  - `_fecha_inicio`: Fecha de inicio de la campaña
+  - `_fecha_termino`: Fecha de término de la campaña
+  - `_anuncios`: Lista de anuncios asociados a la campaña
+
+- Constante importante:
+  - `LARGO_NOMBRE_ANUNCIO`: Longitud máxima permitida para el nombre de la campaña (250 caracteres)
+
+## Manejo de Errores
+
+El proyecto implementa un sistema de manejo de errores personalizado:
+
+### Clases de Excepciones
+1. `Error`: Clase base para excepciones personalizadas.
+2. `LargoExcedidoException`: Se lanza cuando se excede la longitud máxima permitida para el nombre de la campaña.
+3. `SubTipoInvalidoException`: Se lanza cuando se intenta asignar un subtipo inválido a un anuncio.
+
+### Registro de Errores
+- Los errores se registran en un archivo de log (`archivolog.log`).
+- Cada entrada de error incluye la fecha y hora del error, junto con una descripción del mismo.
+
+## Funcionalidades Principales
+
+- Creación y gestión de campañas publicitarias.
+- Soporte para múltiples tipos de anuncios: Video, Display y Social.
+- Modificación de propiedades de campañas y anuncios.
+- Manejo de errores personalizado.
+- Registro de errores en un archivo de log.
 
 ------------------------------------------
 
