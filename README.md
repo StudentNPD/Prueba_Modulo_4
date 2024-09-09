@@ -18,11 +18,12 @@ El proyecto está estructurado en varios componentes clave:
 
 A continuación se muestra el diagrama de clases del proyecto:
 
-![Diagrama de Clases](Diagrama de Clases Prueba POO con Python.png)
+![Diagrama de Clases](/Diagrama_de_clases.png)
 
 ## Clases y Variables Importantes
 
 ### Clase Anuncio
+
 - Atributos principales:
   - `_alto`: Altura del anuncio
   - `_ancho`: Ancho del anuncio
@@ -31,17 +32,22 @@ A continuación se muestra el diagrama de clases del proyecto:
   - `_sub_tipo`: Subtipo específico del anuncio
 
 ### Clase Video (hereda de Anuncio)
+
 - Atributo adicional:
   - `duracion`: Duración del video en segundos
 
 ### Clase Display (hereda de Anuncio)
+
 - Sin atributos adicionales, utiliza los de la clase base
 
 ### Clase Social (hereda de Anuncio)
+
 - Sin atributos adicionales, utiliza los de la clase base
 
 ### Clase Campana
+
 - Atributos principales:
+
   - `_nombre`: Nombre de la campaña
   - `_fecha_inicio`: Fecha de inicio de la campaña
   - `_fecha_termino`: Fecha de término de la campaña
@@ -55,11 +61,13 @@ A continuación se muestra el diagrama de clases del proyecto:
 El proyecto implementa un sistema de manejo de errores personalizado:
 
 ### Clases de Excepciones
+
 1. `Error`: Clase base para excepciones personalizadas.
 2. `LargoExcedidoException`: Se lanza cuando se excede la longitud máxima permitida para el nombre de la campaña.
 3. `SubTipoInvalidoException`: Se lanza cuando se intenta asignar un subtipo inválido a un anuncio.
 
 ### Registro de Errores
+
 - Los errores se registran en un archivo de log (`archivolog.log`).
 - Cada entrada de error incluye la fecha y hora del error, junto con una descripción del mismo.
 
@@ -71,7 +79,7 @@ El proyecto implementa un sistema de manejo de errores personalizado:
 - Manejo de errores personalizado.
 - Registro de errores en un archivo de log.
 
-------------------------------------------
+---
 
 ## Prerequisitos
 
@@ -80,16 +88,18 @@ El proyecto implementa un sistema de manejo de errores personalizado:
 
 ## Ejecución
 
-***Windows***
+**_Windows_**
 
 `python demo.py`
 
-***Linux & iOS***
+**_Linux & iOS_**
 
 `python3 demo.py`
 
-------------------------------------------
+---
+
 ## Colaboradores
-- [Francisco Colomer](https://github.com/Cy5k0) 
+
+- [Francisco Colomer](https://github.com/Cy5k0)
 - [Francisco Monroy](https://github.com/fmonroy75)
 - [Natalia Peña](https://github.com/StudentNPD)
