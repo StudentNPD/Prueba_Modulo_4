@@ -1,11 +1,10 @@
 class Error(Exception):
     pass
 
+
 class LargoExcedidoException(Error):
     pass
 
-class SubTipoInvalidoException(Error):
-    pass
 
-class SubTipoInvalidoError(Error):
+class SubTipoInvalidoException(Error):
     pass
