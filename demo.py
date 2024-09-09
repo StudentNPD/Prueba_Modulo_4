@@ -2,56 +2,60 @@ from campana import Campana
 from error import Error, LargoExcedidoException, SubTipoInvalidoException, SubTipoInvalidoError
 from datetime import datetime
 
-NOMBRE_LOG="archivolog.log"
+NOMBRE_LOG = "archivolog.log"
 
+def mostrar_menu():
+    print("\nMenú de Gestión de Campaña:")
+    print("1. Modificar Nombre")
+    print("2. Modificar Subtipo")
+    print("3. Mostrar Información de la Campaña")
+    print("4. Salir")
 
-#crear campana
-nueva_campana = Campana("Nueva Campana", "27/10/2024", "27/10/2024")
+def main():
+    nueva_campana = Campana("Nueva Campana", "27/10/2024", "27/10/2024")
+    nueva_campana.inicializar()
 
-
-log = None
-consultar = True
-
-while consultar:
-
-    try:
-        print("Creemos una campaña! :D")
-        # Ingrese el nombre de su campaña 
-        # Preguntar por el tipo de anuncio que desea agregar con sus especificaciones
-        # Preguntar si desea agregar otro anuncio
-        # Mostrar: 
-        #          Nombre de la campaña: Campaña 1
-        #          Anuncios: 1 Video, 2 Display, 0 Social
-        # Preguntar si desea cambiar nombre campaña, agregar anuncio o salir
-        
-        
-        
-        nuevo_nombre = input("Ingrese el nuevo nombre de la campana:\n")
-        print(nuevo_nombre)
-        nueva_campana.nombre = nuevo_nombre
-        nueva_campana.crear_anuncio()
-        consultar = False
-    except LargoExcedidoException as e:
-        fecha_actual = datetime.now()
-        # Imprime solo el mensaje
-        print(e)
-        with open(NOMBRE_LOG, 'a') as log:
-            log.write(f'{fecha_actual} : [ERROR]: {e}\n')
+    while True:
+        try:
+            print(f"\nCampaña actual: {nueva_campana.nombre}")
+            print(f"Subtipo actual: {nueva_campana.anuncios[0].sub_tipo}")
             
-    except SubTipoInvalidoException as e:
-        fecha_actual = datetime.now()
-        # Imprime solo el mensaje
-        print(e)
-        with open(NOMBRE_LOG, 'a') as log:
-            log.write(f'{fecha_actual} - [ERROR]: {e}\n')
+            mostrar_menu()
+            opcion = int(input("Seleccione una opción (1-4): "))
+            
+            if opcion == 1:
+                nuevo_nombre = input("Ingrese el nuevo nombre de su campaña: ")
+                nueva_campana.nombre = nuevo_nombre
+                print(f"Nombre de la campaña actualizado a: {nueva_campana.nombre}")
+            
+            elif opcion == 2:
+                mi_anuncio = nueva_campana.anuncios[0]
+                print(f"Subtipo actual: {mi_anuncio.sub_tipo}")
+                print("Subtipos disponibles:", mi_anuncio.mostrar_subtipos)
+                mi_subtipo = input("Escoja un nuevo subtipo: ")
+                mi_anuncio.sub_tipo = mi_subtipo
+                print(f"Subtipo actualizado a: {mi_anuncio.sub_tipo}")
+            
+            elif opcion == 3:
+                print(nueva_campana)
+            
+            elif opcion == 4:
+                print("Gracias por usar el programa. ¡Hasta luego!")
+                break
+            
+            else:
+                print("Opción no válida. Por favor, intenta de nuevo.")
 
-    except Error as e:
-        fecha_actual = datetime.now()
-        # Imprime solo el mensaje
-        print(e)
-        with open(NOMBRE_LOG, 'a') as log:
-            log.write(f'{fecha_actual} : [ERROR]: {e}\n')
+        except (LargoExcedidoException, SubTipoInvalidoException, SubTipoInvalidoError, Error) as e:
+            fecha_actual = datetime.now()
+            print(f"Error: {e}")
+            with open(NOMBRE_LOG, 'a') as log:
+                log.write(f'{fecha_actual} - [ERROR]: {e}\n')
 
-    finally:
-        if log is not None:
-            log.close()
+        except ValueError:
+            print("Por favor, ingrese un número válido.")
+
+        input("\nPresione Enter para continuar...")
+
+if __name__ == "__main__":
+    main()
