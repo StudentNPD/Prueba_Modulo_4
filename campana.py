@@ -52,22 +52,24 @@ class Campana:
         while tipo_anuncio not in  ["V", "D", "S"]:
         #if tipo_anuncio not in  ["V", "D", "S"]: # No es necesario que sea un ciclo
             tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
-         #   raise SubTipoInvalidoException("Ingrese en mayuscula solo la primera letra de la opción")
+        #   raise SubTipoInvalidoException("Ingrese en mayuscula solo la primera letra de la opción")
 
         url_archivo = input("Ingrese la url del archivo:\n")
         url_click = input("Ingrese la url del click:\n")
-        sub_tipo = input("Ingrese el subtipo del anuncio:\n")
 
         if tipo_anuncio == "V":
             duracion = int(input("Ingrese la duración del video:\n"))
+            sub_tipo = input("Ingrese el subtipo del anuncio: 'instream' o 'outstream'\n")
             nuevo_anuncio = Video(url_archivo, url_click, sub_tipo, duracion)
         elif tipo_anuncio == "D":
             ancho = int(input("Ingrese el ancho del anuncio:\n"))
             alto = int(input("Ingrese el alto del archivo:\n"))
+            sub_tipo = input("Ingrese el subtipo del anuncio: 'adicional' o 'native'\n")
             nuevo_anuncio = Display(ancho, alto, url_archivo, url_click, sub_tipo)
-        else:
+        elif tipo_anuncio == "S":
             ancho = int(input("Ingrese el ancho del anuncio:\n"))
             alto = int(input("Ingrese el alto del archivo:\n"))
+            sub_tipo = input("Ingrese el subtipo del anuncio: 'facebook' o 'linkedin'\n")
             nuevo_anuncio = Social(ancho, alto, url_archivo, url_click, sub_tipo)
 
         self.anuncios.append(nuevo_anuncio)
