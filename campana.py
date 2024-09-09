@@ -47,10 +47,11 @@ class Campana:
 
 
     def crear_anuncio(self):
-        tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social'):\n").strip().upper
+        tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social'):\n")
+        tipo_anuncio=tipo_anuncio.upper()
         while tipo_anuncio not in  ["V", "D", "S"]:
         #if tipo_anuncio not in  ["V", "D", "S"]: # No es necesario que sea un ciclo
-            tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n").strip().upper
+            tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
          #   raise SubTipoInvalidoException("Ingrese en mayuscula solo la primera letra de la opción")
 
         url_archivo = input("Ingrese la url del archivo:\n")
@@ -71,25 +72,6 @@ class Campana:
 
         self.anuncios.append(nuevo_anuncio)
         return nuevo_anuncio
-
-    def __str__(self) -> str:
-        num_videos = 0
-        num_display = 0
-        num_social = 0
-        
-        for anuncio in self.anuncios:
-            if anuncio.__class__.__name__ == "V":
-                num_videos += 1
-            elif anuncio.__class__.__name__ == "D":
-                num_display += 1
-            else:
-                num_social += 1
-        
-        
-        desc=f"Nombre de la campaña: {self.nombre}"
-        desc=desc + f"Anuncios: {num_videos} Video, {num_display} Display, {num_social} Social"
-                
-        return desc
 
     def __str__(self) -> str:
         num_videos = 0
