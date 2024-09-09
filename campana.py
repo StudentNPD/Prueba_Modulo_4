@@ -51,7 +51,7 @@ class Campana:
     
 
     def crear_anuncio(self):
-        tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social'):\n")
+        tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social (V , D o S)'):\n")
         tipo_anuncio=tipo_anuncio.upper()
         while tipo_anuncio not in  ["V", "D", "S"]:
         #if tipo_anuncio not in  ["V", "D", "S"]: # No es necesario que sea un ciclo
@@ -63,17 +63,17 @@ class Campana:
 
         if tipo_anuncio == "V":
             duracion = int(input("Ingrese la duración del video:\n"))
-            sub_tipo = input("Ingrese el subtipo del anuncio: 'instream' o 'outstream'\n")
+            sub_tipo = input("Ingrese el subtipo del anuncio: 'instream' o 'outstream'\n").lower()
             nuevo_anuncio = Video(url_archivo, url_click, sub_tipo, duracion)
         elif tipo_anuncio == "D":
             ancho = int(input("Ingrese el ancho del anuncio:\n"))
             alto = int(input("Ingrese el alto del archivo:\n"))
-            sub_tipo = input("Ingrese el subtipo del anuncio: 'adicional' o 'native'\n")
+            sub_tipo = input("Ingrese el subtipo del anuncio: 'adicional' o 'native'\n").lower()
             nuevo_anuncio = Display(ancho, alto, url_archivo, url_click, sub_tipo)
         elif tipo_anuncio == "S":
             ancho = int(input("Ingrese el ancho del anuncio:\n"))
             alto = int(input("Ingrese el alto del archivo:\n"))
-            sub_tipo = input("Ingrese el subtipo del anuncio: 'facebook' o 'linkedin'\n")
+            sub_tipo = input("Ingrese el subtipo del anuncio: 'facebook' o 'linkedin'\n").lower()
             nuevo_anuncio = Social(ancho, alto, url_archivo, url_click, sub_tipo)
 
         self.anuncios.append(nuevo_anuncio)
