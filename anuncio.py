@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from error import SubTipoInvalidoException, SubTipoInvalidoError #agregado
+from error import SubTipoInvalidoException #agregado
 
 class Anuncio:
 
@@ -77,7 +77,7 @@ class Video(Anuncio):
 
     def __init__(self, url_archivo, url_clic, sub_tipo, duracion):
         if sub_tipo not in self.SUB_TIPOS:
-            raise SubTipoInvalidoError(f"Subtipo {sub_tipo} no es válido para Video")
+            raise SubTipoInvalidoException(f"Subtipo {sub_tipo} no es válido para Video")
         super().__init__(1, 1, url_archivo, url_clic, sub_tipo)
         self.duracion = duracion
 
@@ -94,7 +94,7 @@ class Display(Anuncio):
 
     def __init__(self, ancho, alto, url_archivo, url_clic, sub_tipo):
         if sub_tipo not in self.SUB_TIPOS:
-            raise SubTipoInvalidoError(f"Subtipo {sub_tipo} no es valido para Display")
+            raise SubTipoInvalidoException(f"Subtipo {sub_tipo} no es valido para Display")
         super().__init__(ancho, alto, url_archivo, url_clic, sub_tipo)
 
     def comprimir_anuncio():
@@ -110,7 +110,7 @@ class Social(Anuncio):
 
     def __init__(self, ancho, alto, url_archivo, url_clic, sub_tipo):
         if sub_tipo not in self.SUB_TIPOS:
-            raise SubTipoInvalidoError(f"Subtipo {sub_tipo} no es válido para Social")
+            raise SubTipoInvalidoException(f"Subtipo {sub_tipo} no es válido para Social")
         super().__init__(ancho, alto, url_archivo, url_clic, sub_tipo)
 
     def comprimir_anuncio():
