@@ -44,7 +44,11 @@ class Campana:
     @property
     def anuncios(self):
         return self.__anuncios
-
+    
+    # Pone el video por defecto
+    def inicializar(self):
+        self.__anuncios.append(Video("gato.url","2gato.url", "instream", 23))
+    
 
     def crear_anuncio(self):
         tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social'):\n")
@@ -74,22 +78,25 @@ class Campana:
 
         self.anuncios.append(nuevo_anuncio)
         return nuevo_anuncio
-
+        
+    # sobrecarga
     def __str__(self) -> str:
         num_videos = 0
         num_display = 0
         num_social = 0
         
         for anuncio in self.anuncios:
-            if anuncio.__class__.__name__ == "V":
+            # No estaba funcionado por que no encontraba el nombre 
+            if anuncio.__class__.__name__ == "Video": # V 
                 num_videos += 1
-            elif anuncio.__class__.__name__ == "D":
+            elif anuncio.__class__.__name__ == "Display": # D
                 num_display += 1
-            else:
+            elif anuncio.__class__.__name__ == "Social": # S
                 num_social += 1
         
         
         desc=f"Nombre de la campaña: {self.nombre}"
-        desc=desc + f"Anuncios: {num_videos} Video, {num_display} Display, {num_social} Social"
+        desc=desc + f"\nAnuncios: {num_videos} Video, {num_display} Display, {num_social} Social" 
+        #le puse una salto de linea en anuncios
                 
         return desc
