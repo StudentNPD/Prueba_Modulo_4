@@ -5,11 +5,13 @@ from error import SubTipoInvalidoException  # agregado
 class Anuncio:
 
     def __init__(self, alto, ancho, url_archivo, url_clic, sub_tipo):
-        self._alto = alto if alto > 0 else 1
-        self._ancho = ancho if ancho > 0 else 1
-        self._url_archivo = url_archivo
-        self._url_clic = url_clic
-        self._sub_tipo = sub_tipo
+        # faltaba un guion bajo en todas
+        # faltaba una k en url_click
+        self.__alto = alto if alto > 0 else 1
+        self.__ancho = ancho if ancho > 0 else 1
+        self.__url_archivo = url_archivo
+        self.__url_click = url_clic
+        self.__sub_tipo = sub_tipo
 
     @property
     def ancho(self):
@@ -85,11 +87,22 @@ class Video(Anuncio):
         super().__init__(1, 1, url_archivo, url_clic, sub_tipo)
         self.duracion = duracion if duracion > 0 else 5
 
+    
+    @property
+    def nombre(self):
+        return self.__sub_tipo
+
+    # AGREGADO
+    @property
+    def mostrar_subtipos(self):
+        return self.SUB_TIPOS
+
     def comprimir_anuncio():
         print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
 
     def redimensionar_anuncio():
         print("REDIMENSIONAMIENTO DE ANUNCIOS DISPLAY NO IMPLEMENTADO AÚN")
+
 
 
 class Display(Anuncio):
