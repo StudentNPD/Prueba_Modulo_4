@@ -1,62 +1,98 @@
 from error import LargoExcedidoException, SubTipoInvalidoException # agregado
 from anuncio import Display, Video, Social # agregado
 
-
 class Campana:
-    LARGO_NOMBRE_ANUNCIO=250
+    """
+    Clase que representa una campaña publicitaria.
+
+    Esta clase gestiona una campaña que puede contener varios tipos de anuncios,
+    incluyendo video, display y anuncios de redes sociales.
+
+    Atributos:
+        LARGO_NOMBRE_ANUNCIO (int): Longitud máxima permitida para el nombre de la campaña.
+    """
+
+    LARGO_NOMBRE_ANUNCIO = 250
 
     def __init__(self, nombre: str, fecha_inicio: str, fecha_termino: str) -> None:
+        """
+        Inicializa una instancia de Campana.
+
+        Args:
+            nombre (str): Nombre de la campaña.
+            fecha_inicio (str): Fecha de inicio de la campaña.
+            fecha_termino (str): Fecha de término de la campaña.
+        """
         self.__nombre = nombre
         self.__fecha_inicio = fecha_inicio
         self.__fecha_termino = fecha_termino
         self.__anuncios = []
-        #self.anuncios_disponibles = ["Video", "Display", "Social"]
 
     @property
     def nombre(self):
+        """str: Obtiene o establece el nombre de la campaña."""
         return self.__nombre
 
     @nombre.setter
     def nombre(self, valor: str):
-        if len(valor) <= 250: # LARGO_NOMBRE_ANUNCIO: No lo toma 
+        """
+        Establece el nombre de la campaña.
+
+        Args:
+            valor (str): El nuevo nombre de la campaña.
+
+        Raises:
+            LargoExcedidoException: Si la longitud del nombre excede LARGO_NOMBRE_ANUNCIO.
+        """
+        if len(valor) <= self.LARGO_NOMBRE_ANUNCIO:
             self.__nombre = valor
         else:
-            raise LargoExcedidoException("El número de carácteres excede lo permitido")
-            
-
+            raise LargoExcedidoException("El número de caracteres excede lo permitido")
 
     @property
     def fecha_inicio(self):
+        """str: Obtiene o establece la fecha de inicio de la campaña."""
         return self.__fecha_inicio
 
     @fecha_inicio.setter
     def fecha_inicio(self, valor: str):
+        """Establece la fecha de inicio de la campaña."""
         self.__fecha_inicio = valor
 
     @property
     def fecha_termino(self):
+        """str: Obtiene o establece la fecha de término de la campaña."""
         return self.__fecha_termino
 
     @fecha_termino.setter
     def fecha_termino(self, valor: str):
+        """Establece la fecha de término de la campaña."""
         self.__fecha_termino = valor
 
     @property
     def anuncios(self):
+        """list: Obtiene la lista de anuncios de la campaña."""
         return self.__anuncios
-    
-    # Pone el video por defecto
+
     def inicializar(self):
-        self.__anuncios.append(Video("gato.url","2gato.url", "instream", 23))
-    
+        """
+        Inicializa la campaña con un anuncio de video por defecto.
+        """
+        self.__anuncios.append(Video("gato.url", "2gato.url", "instream", 23))
 
     def crear_anuncio(self):
+        """
+        Crea un nuevo anuncio y lo añade a la campaña.
+
+        Este método interactúa con el usuario para obtener los detalles del anuncio.
+
+        Returns:
+            object: El nuevo anuncio creado (instancia de Video, Display o Social).
+        """
         tipo_anuncio = input("Ingrese el tipo de anuncio que desea crear ('Video', 'Display' o 'Social (V , D o S)'):\n")
-        tipo_anuncio=tipo_anuncio.upper()
-        while tipo_anuncio not in  ["V", "D", "S"]:
-        #if tipo_anuncio not in  ["V", "D", "S"]: # No es necesario que sea un ciclo
+        tipo_anuncio = tipo_anuncio.upper()
+        while tipo_anuncio not in ["V", "D", "S"]:
             tipo_anuncio = input("Ingrese una de las opciones válidas('Video', 'Display' o 'Social'):\n")
-        #   raise SubTipoInvalidoException("Ingrese en mayuscula solo la primera letra de la opción")
 
         url_archivo = input("Ingrese la url del archivo:\n")
         url_click = input("Ingrese la url del click:\n")
@@ -78,25 +114,27 @@ class Campana:
 
         self.anuncios.append(nuevo_anuncio)
         return nuevo_anuncio
-        
-    # sobrecarga
+
     def __str__(self) -> str:
+        """
+        Genera una representación en cadena de la campaña.
+
+        Returns:
+            str: Una descripción de la campaña, incluyendo su nombre y el número de cada tipo de anuncio.
+        """
         num_videos = 0
         num_display = 0
         num_social = 0
-        
+
         for anuncio in self.anuncios:
-            # No estaba funcionado por que no encontraba el nombre 
-            if anuncio.__class__.__name__ == "Video": # V 
+            if anuncio.__class__.__name__ == "Video":
                 num_videos += 1
-            elif anuncio.__class__.__name__ == "Display": # D
+            elif anuncio.__class__.__name__ == "Display":
                 num_display += 1
-            elif anuncio.__class__.__name__ == "Social": # S
+            elif anuncio.__class__.__name__ == "Social":
                 num_social += 1
-        
-        
-        desc=f"Nombre de la campaña: {self.nombre}"
-        desc=desc + f"\nAnuncios: {num_videos} Video, {num_display} Display, {num_social} Social" 
-        #le puse una salto de linea en anuncios
-                
-        return desc
+
+        desc = f"Nombre de la campaña: {self.nombre}"
+        desc = desc + f"\nAnuncios: {num_videos} Video, {num_display} Display, {num_social} Social"
+
+        return desc 
