@@ -107,7 +107,7 @@ class Video(Anuncio):
 
 class Display(Anuncio):
     FORMATO = "Display"
-    SUB_TIPOS = (" adicional", "native")
+    SUB_TIPOS = ("adicional", "native")
 
     def __init__(self, ancho, alto, url_archivo, url_clic, sub_tipo):
         if sub_tipo not in self.SUB_TIPOS:
