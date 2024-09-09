@@ -5,6 +5,9 @@ from datetime import datetime
 NOMBRE_LOG = "archivolog.log"
 
 def mostrar_menu():
+    """
+    Muestra el menú principal de opciones para la gestión de la campaña.
+    """
     print("\nMenú de Gestión de Campaña:")
     print("1. Modificar Nombre")
     print("2. Modificar Subtipo")
@@ -12,6 +15,13 @@ def mostrar_menu():
     print("4. Salir")
 
 def main():
+    """
+    Función principal que ejecuta el programa de gestión de campaña.
+
+    Esta función crea una nueva campaña, la inicializa y entra en un bucle
+    que permite al usuario interactuar con la campaña a través de un menú.
+    Maneja las excepciones y registra los errores en un archivo de log.
+    """
     nueva_campana = Campana("Nueva Campana", "27/10/2024", "27/10/2024")
     nueva_campana.inicializar()
 
@@ -51,7 +61,6 @@ def main():
             print(f"Error: {e}")
             with open(NOMBRE_LOG, 'a') as log:
                 log.write(f'{fecha_actual} - [ERROR]: {e}\n')
-
         except ValueError:
             print("Por favor, ingrese un número válido.")
 
