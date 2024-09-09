@@ -62,6 +62,7 @@ class Anuncio:
         else:
             raise SubTipoInvalidoException("El formato del archivo no es válido")
 
+    @classmethod
     def mostrar_formatos():
         for formatos in [Video, Display, Social]:
             print(f"FORMATO {formatos.FORMATO}:")
